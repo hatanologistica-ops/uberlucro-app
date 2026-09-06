@@ -1,3 +1,11 @@
+import subprocess
+import sys
+
+try:
+    import plotly
+except ImportError:
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "plotly", "pandas"])
+
 import streamlit as st
 import datetime
 import pandas as pd
@@ -70,7 +78,7 @@ if st.session_state.tela_ativa == "Resumo":
     st.subheader("Resumo de Hoje")
     
     if len(st.session_state.banco_dados) == 0:
-        st.info("Nenhuma jornada registrada hoje. Vá em 'Minhas Jornadas' para fazer o seu original lançamento!")
+        st.info("Nenhuma jornada registrada hoje. Vá em 'Minhas Jornadas' para fazer o seu primeiro lançamento!")
         lucro_hoje, ganho_hoje, combustivel_hoje, km_rodado_hoje, depreciacao_hoje = 0.0, 0.0, 0.0, 0.0, 0.0
     else:
         ultimo = st.session_state.banco_dados[-1]
