@@ -1,11 +1,3 @@
-import subprocess
-import sys
-
-try:
-    import plotly
-except ImportError:
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "plotly", "pandas"])
-
 import streamlit as st
 import datetime
 import pandas as pd
